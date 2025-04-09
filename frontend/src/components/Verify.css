@@ -1,0 +1,142 @@
+/* Existing container and layout styles */
+.service-container {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 20px;
+  }
+  
+  /* Verification-specific wrapper */
+  .verification-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+  }
+  
+  /* Verification card/container */
+  .verification-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+  
+  /* Title and subtitle */
+  .verification-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #512da8; /* Primary purple shade */
+    margin-bottom: 0.5em;
+  }
+  
+  .verification-subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1.5em;
+  }
+  
+  /* Form area */
+  .verification-form {
+    margin-top: 1em;
+  }
+  
+  /* Code input container */
+  .code-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 5px;
+  }
+  
+  /* Individual code input fields */
+  .verification-input {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    text-align: center;
+    border: 2px solid #7e57c2;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+  
+  .verification-input:focus {
+    border-color: #512da8; /* Darker purple on focus */
+  }
+  
+  /* Error text styling */
+  .verification-error {
+    color: #f56565;
+    font-weight: 600;
+    margin: 8px 0;
+  }
+  
+  /* Verification button styles */
+  .verification-button {
+    width: 100%;
+    padding: 12px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #7e57c2; /* Button purple */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .verification-button:hover {
+    background-color: #5e35b1; /* Slightly darker purple on hover */
+  }
+  
+  .verification-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Sample header area styles (already in your Service.css) */
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  /* Tabs and tab buttons (already in your Service.css) */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .tab-btn {
+    padding: 12px 20px;
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .tab-btn.active {
+    background-color: #512da8;
+  }
+  
+  .tab-btn:hover {
+    background-color: #5e35b1;
+  }
+  
+  .tab-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }

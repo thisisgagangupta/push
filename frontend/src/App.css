@@ -1,0 +1,194 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* Body & Main Landing Page Styles */
+body {
+  background-color: #f0f8ff;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: auto; */
+  color: #333;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+.landing-page {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.landing-page h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #272727;
+}
+
+.landing-page p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 150px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  background-color: #6a5acd; /* Medium Slate Blue */
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #4b0082; /* Indigo */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Features Section */
+.features-section {
+  text-align: center;
+  padding: 40px;
+  margin-top: 60px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap; /* allows items to wrap on small screens */
+  gap: 20px;
+}
+
+.features-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #272727;
+}
+
+.feature-item {
+  display: inline-block;
+  width: 30%;
+  justify-content: space-between;
+  /* margin: 15px;    shifting the feature section to the right */
+  padding: 20px;
+  flex: 1 1 250px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.feature-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #6a5acd;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Footer */
+.footer {
+  background-color: #2e3b4e;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: auto;
+  width: 100%;
+  position: relative;
+}
+
+.footer p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.footer .footer-divider {
+  margin: 10px 0;
+  border-top: 2px solid #6a5acd;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+/* Adding some spacing for responsive design */
+@media screen and (max-width: 768px) {
+  .landing-page {
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds vertical spacing */
+  }
+
+  .feature-item {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+
+  .landing-page h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+  .landing-page p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  .features-section {
+    padding: 20px;
+    margin-top: 30px;
+  }
+}

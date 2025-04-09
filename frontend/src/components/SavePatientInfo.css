@@ -1,0 +1,560 @@
+.save-patient-info-container {
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  max-width: 900px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  opacity: 0;
+  animation: fadeIn 0.4s forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Title styling */
+.save-patient-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: #512da8;
+}
+
+/* The top-right link for customizing fields */
+.header-links-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.overlay-link {
+  text-decoration: underline;
+  font-weight: 500;
+  color: #1565c0;
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+.overlay-link:hover {
+  color: #0d47a1;
+}
+
+/* The main form */
+.save-patient-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 120px;
+}
+.form-group.wide {
+  flex: 2;
+}
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #333;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #6a5acd;
+  box-shadow: 0 0 5px rgba(106, 90, 205, 0.5);
+  outline: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa;
+}
+
+/* Additional spacing row for "Add More Info" links */
+.add-more-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* The row where we have the save button and the summary icon */
+.form-submit-row {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+/* The save button */
+.save-btn {
+  padding: 0.7rem 1.5rem;
+  background-color: #6a5acd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.save-btn:hover {
+  background-color: #5e35b1;
+  transform: translateY(-2px);
+}
+.save-btn.loading {
+  cursor: progress;
+}
+.save-btn.loading::after {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 8px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Summary icon next to the button */
+.summary-icon-container {
+  margin-left: 1rem;
+  position: relative;
+}
+.info-summary-icon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #666;
+  background-color: #f0f0f0;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.info-summary-icon:hover {
+  background-color: #e1e1e1;
+  color: #333;
+}
+.info-summary-popover {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  min-width: 220px;
+  max-width: 270px;
+  font-size: 0.9rem;
+}
+.info-summary-popover pre {
+  margin: 0;
+  white-space: pre-line;
+}
+
+/* Toggle Switch */
+.voice-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.voice-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.voice-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.voice-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.voice-toggle-switch input:checked + .voice-toggle-slider {
+  background-color: #4caf50;
+}
+
+.voice-toggle-switch input:checked + .voice-toggle-slider:before {
+  transform: translateX(22px);
+}
+
+/* Recording Wave (3 pulsing dots) */
+.recording-wave {
+  display: flex;
+  align-items: center;
+}
+
+.wave-dot {
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  background-color: #e53935; /* red-ish color */
+  border-radius: 50%;
+  animation: waveDot 1s infinite;
+}
+
+.wave-dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.wave-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.wave-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes waveDot {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Processing Spinner */
+.audio-processing-spinner {
+  display: inline-block;
+  padding: 2px 8px;
+  font-weight: bold;
+  color: #555;
+  position: relative;
+}
+
+.audio-processing-spinner::after {
+  content: "";
+  display: inline-block;
+  margin-left: 6px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  border-right-color: transparent;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+}
+
+/* Complaints table card */
+.complaints-table-card {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+}
+.complaints-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.complaints-table-label {
+  font-weight: bold;
+}
+.complaints-template-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+.template-btn {
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  background-color: #6a5acd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.template-btn:hover {
+  background-color: #5e35b1;
+}
+.template-selector {
+  margin-top: 0.5rem;
+}
+
+/* The actual table styling */
+.complaints-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+}
+.enhanced-complaints-table {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  /* Removed overflow: hidden to ensure fields remain fully visible */
+}
+.enhanced-complaints-table thead {
+  background-color: #f2f2f2;
+  color: #333;
+}
+.enhanced-complaints-table th,
+.enhanced-complaints-table td {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  vertical-align: middle;
+}
+.enhanced-complaints-table tbody tr:hover {
+  background-color: #fafafa;
+}
+.remove-col {
+  width: 40px;
+}
+.remove-row-btn {
+  background-color: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  line-height: 1;
+  font-size: 1rem;
+  padding: 0;
+}
+.remove-row-btn:hover {
+  background-color: #d32f2f;
+}
+
+.enhanced-complaints-table td {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: inherit;
+  word-wrap: break-word;
+  max-width: 300px;
+}
+
+.enhanced-complaints-table .react-select__single-value {
+  white-space: normal !important;
+  text-overflow: clip !important;
+  overflow: visible !important;
+}
+
+/* Modal overlay and content styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85%;
+  overflow-y: auto;
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 9999;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.3s ease;
+}
+.modal-content.large-modal {
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90%;
+  overflow-y: auto;
+}
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.close-modal {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #999;
+}
+.close-modal:hover {
+  color: #444;
+}
+.modal-save-btn {
+  background-color: #6a5acd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.modal-save-btn:hover {
+  background-color: #5e35b1;
+}
+
+/* Field customizer panel */
+.field-list {
+  margin-top: 1rem;
+}
+.field-list-item {
+  margin-bottom: 6px;
+}
+
+/* Camera button & file input layout */
+.file-input-with-camera {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.camera-btn {
+  background-color: grey;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.camera-btn:hover {
+  background-color: #6a5acd;
+}
+.selected-file-info {
+  color: #666;
+  margin-left: 4px;
+}
+
+/* React-select improvements so that selected text is clearly visible */
+.react-select__control {
+  min-height: 36px;
+  border: 1px solid #ccc !important;
+  box-shadow: none !important;
+  &:hover {
+    border-color: #6a5acd !important;
+  }
+}
+.react-select__single-value {
+  color: #333 !important;
+  font-weight: 500;
+}
+.react-select__placeholder {
+  color: #aaa !important;
+}
+
+@media (max-width: 768px) {
+  .save-patient-info-container {
+    padding: 1rem;
+    max-width: 95%;
+  }
+  .save-patient-title {
+    font-size: 1.4rem;
+  }
+  .form-group label {
+    font-size: 0.85rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.85rem;
+  }
+  .modal-content.large-modal {
+    width: 95%;
+    max-width: 95%;
+    max-height: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-row {
+    flex-direction: column;
+  }
+  .save-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .header-links-container {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .summary-icon-container {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  .info-summary-popover {
+    top: 100%;
+    left: 50%;
+  }
+  .modal-content.large-modal {
+    width: 95%;
+    max-width: 95%;
+    max-height: 80%;
+  }
+}
